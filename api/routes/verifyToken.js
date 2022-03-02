@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-
+//For general customer login
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.token;
   if (authHeader) {
@@ -19,6 +19,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+//Only admin and user itself has the ability to edit 
 const verifyTokenAndAuthorization = (req, res, next) => {
   verifyToken(req, res, () => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
@@ -29,6 +30,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
   });
 };
 
+//for Routes that are only available for admin
 const verifyTokenAndAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
       if (req.user.isAdmin) {

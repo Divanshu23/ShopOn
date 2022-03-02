@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 dotenv.config();
 
+
 //REGISTER LOGIC
 router.post("/register", async (req, res) => {
   const newUser = new User({
@@ -13,7 +14,7 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
-      process.env.PASS_SECRET
+      process.env.PASS_SEC
     ).toString(),
   });
   try {
@@ -27,7 +28,6 @@ router.post("/register", async (req, res) => {
 });
 
 //Login logic
-
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
 
     const hashedPassword = CryptoJS.AES.decrypt(
       user.password,
-      process.env.PASS_SECRET
+      process.env.PASS_SEC
     );
 
     const orgPassword = hashedPassword.toString(CryptoJS.enc.Utf8);

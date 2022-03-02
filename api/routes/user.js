@@ -8,7 +8,7 @@ const {
 const router = require("express").Router();
 const dotenv = require("dotenv");
 
-dotenv.config();
+dotenv.config(); 
 
 //UPDATE USER
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {

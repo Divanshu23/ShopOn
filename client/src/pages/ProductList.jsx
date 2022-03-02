@@ -9,7 +9,9 @@ import {mobile} from "../responsive";
 import { useLocation } from "react-router-dom";
 
 const Container = styled.div``;
-const Title = styled.h1``;
+const Title = styled.h1`
+margin-left:1%;
+`;
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -37,6 +39,7 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
+  //to get the pathname - cateogory
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
 
@@ -64,12 +67,12 @@ const ProductList = () => {
             <Option disabled>
               Color
             </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
+            <Option>white</Option>
+            <Option>black</Option>
+            <Option>orange</Option>
+            <Option>brown</Option>
+            <Option>yellow</Option>
+            <Option>green</Option>
           </Select>
           <Select name = "size" onChange={handleFilterChange}>
             <Option disabled>
